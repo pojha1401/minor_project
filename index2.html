@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" type="css">
+    <title>Countrypedia</title>
+</head>
+
+<body>
+    <div class="row container">
+        <div class="input-field col s6">
+            <h5 class="center-align">
+                <i class="small material-icons">flag</i>Select A medicine
+            </h5>
+            <div id="input-container">
+                <input placeholder="e.g crocin" id="search" type="text" class="validate">
+                <button id="add">+</button>
+            </div>
+            <button class="submit">submit</button>
+            <ul id="interactionList"></ul>
+        </div>
+    </div>
+    <div id="medicineList"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="index2.js"></script>
+</body>
+
+</html>
