@@ -60,7 +60,7 @@ async function processImage() {
                 console.log(medicineNamesArray);
 
                 // Remove '[' and ']' and split the string by ','
-                const cleanedString = medicineNamesArray.slice(1, -3).split(', ').map(item => item.replace(/'/g, ''));;
+                const cleanedString = medicineNamesArray.slice(1, -3).split(', ').map(item => item.replace(/'/g, ''));
 
                 // Create an array with the cleaned values
                 const resultArray = cleanedString.map(item => item.trim());

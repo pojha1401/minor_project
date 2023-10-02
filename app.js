@@ -158,21 +158,31 @@ app.get("/submit", async (req, res) => {
 
         const response = await axios.get(`https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=${t}`);
         rxcui = [];
+        // Initialize an empty array to store interactions
+
         if (response.data.fullInteractionTypeGroup) {
-            const result2 = response.data.fullInteractionTypeGroup[0].fullInteractionType[0].interactionPair;
+            const result2 = response.data.fullInteractionTypeGroup.forEach(group => {
+                // Loop through fullInteractionType
+                group.fullInteractionType.forEach(interactionType => {
+                    // Loop through interactionPair
+                    interactionType.interactionPair.forEach(pair => {
+                        // Access the desired information
+                        const interaction = {
+                            name1: pair.interactionConcept[0].minConceptItem.name,
+                            name2: pair.interactionConcept[1].minConceptItem.name,
+                            severity: pair.severity,
+                            description: pair.description,
+                        };
 
-            if (result2.length > 0) {
-                for (var i = 0; i < result2.length; i++) {
-                    const interaction = {
-                        name: result2[i].interactionConcept[1].minConceptItem.name,
-                        severity: result2[i].severity,
-                        description: result2[i].description
-                    };
+                        interactionData.interactions.push(interaction);
+                    });
+                });
+            });
 
-                    interactionData.interactions.push(interaction);
-                    console.log(interactionData);
-                }
-            }
+            // Log the complete interaction data after accumulating it
+            console.log(interactionData);
+
+
         } else {
             console.log("not found");
         }
