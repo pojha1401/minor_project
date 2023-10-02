@@ -30,16 +30,16 @@ const searchMedicines = async (searchText, inputElement) => {
 // Function to update the autocomplete list for a specific input element
 const outputHtml = (matches, inputElement) => {
     const matchList = inputElement.nextElementSibling;
-
+    console.log(inputElement.nextElementSibling);
     const html = matches.map(match => `
-    <div class="card card-body mb-1">
+    <li>
       <button type="button"><h4>${match}</h4></button>
-    </div>`
+    </li>`
     ).join('');
 
     matchList.innerHTML = html;
 
-    const buttons = matchList.querySelectorAll('.card button');
+    const buttons = matchList.querySelectorAll('li');
     buttons.forEach(button => {
         button.addEventListener('click', function (e) {
             const medicineName = this.querySelector('h4').textContent;
@@ -66,7 +66,7 @@ const outputHtml = (matches, inputElement) => {
                 });
         });
     });
-};
+}; // Clear the autocomplete
 
 // Clear the autocomplete
 
@@ -81,20 +81,19 @@ document.getElementById("add").addEventListener("click", function () {
     const newInput = document.createElement("input");
     newInput.placeholder = "e.g crocin";
     newInput.type = "text";
-    newInput.className = "validate";
+    newInput.className = "validate drop-down";
 
     // Create a div to hold the autocomplete list for the new input
-    const autoCompleteList = document.createElement("div");
+    const autoCompleteList = document.createElement("ul");
     autoCompleteList.className = "autocomplete-list";
 
-    // Append the new input element and autocomplete list to the container
-    inputContainer.appendChild(newInput);
-    inputContainer.appendChild(autoCompleteList);
+    // Insert the new input element and autocomplete list before the button's parent node
+    inputContainer.insertBefore(newInput, this.parentElement);
+    inputContainer.insertBefore(autoCompleteList, this.parentElement);
 
     // Set up autocomplete for the new input element
     setupAutocomplete(newInput);
 });
-
 $(document).ready(function () {
     $(".submit").click(function () {
         console.log("1");
@@ -111,19 +110,33 @@ $(document).ready(function () {
                 if (data.interactions.length > 0) {
                     // Display interactions on your web page
                     data.interactions.forEach(function (interaction) {
-                        $("#interactionList").append(
+                        var color;
+                        var text;
+                        if (interaction.severity === "high") {
+                            color = "color:red";
+                            text = "unsafe";
+                        }
+                        else if (interaction.severity === "medium") {
+                            color = "color:yellow";
+                            text = "yellow";
+                        }
+                        else {
+                            color = "color:green";
+                            text = "mild";
+                        }
+                        $(".anotherup").append(
+                            `<div class="upR">Inteaction` +
+                            '<ol>' +
                             "<li>" +
                             "Name: " + interaction.name + "<br>" +
-                            "Severity: " + interaction.severity + "<br>" +
-                            "Description: " + interaction.description +
-                            "</li>"
+                            "Description: " + interaction.description + "<br>" +
+                            "Safety Level: <span style=" +
+                            `${color};>${text}</span>` +
+                            "</li>" +
+                            `</ol>` +
+                            `</div>`
                         );
                     });
-                }
-                else {
-                    $("#interactionList").append(
-                        "<li>" + "Interaction not found" + "<li>"
-                    );
                 }
                 // Set the content of the result container with the HTML string
             })
@@ -133,4 +146,3 @@ $(document).ready(function () {
 
     });
 });
-

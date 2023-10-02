@@ -104,7 +104,7 @@ app.post("/contact2", async function (req, res) {
             console.log(s);
             const response0 = await axios.get(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${s}&search=1`)
             const result = await response0.data;
-            const toInt = await result.idGroup.rxnormId;
+            const toInt = await result.idGroup.rxnormId[0];
             rxcui.push(toInt);
             console.log(toInt);
             // const severity = result2.interactionTypeGroup[0].interactionType[0].severity;
@@ -129,11 +129,12 @@ app.get("/submit", async (req, res) => {
     t = t + rxcui[rxcui.length - 1];
     console.log(t);
     // Instead of console.log, store the data in an object
-    const interactionData = {
+    var interactionData = {
         interactions: []  // Store the interaction data here
     };
     if (rxcui.length == 1) {
         const response = await axios.get(`https://rxnav.nlm.nih.gov/REST/interaction/interaction.json?rxcui=${t}&sources=ONCHigh`);
+        rxcui = [];
         console.log(response.data);
         if (response.data.interactionTypeGroup) {
             const result2 = response.data.interactionTypeGroup[0].interactionType[0].interactionPair;
@@ -156,6 +157,7 @@ app.get("/submit", async (req, res) => {
     } else {
 
         const response = await axios.get(`https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=${t}`);
+        rxcui = [];
         if (response.data.fullInteractionTypeGroup) {
             const result2 = response.data.fullInteractionTypeGroup[0].fullInteractionType[0].interactionPair;
 
@@ -174,10 +176,15 @@ app.get("/submit", async (req, res) => {
         } else {
             console.log("not found");
         }
+        rxcui = [];
     }
 
     // Send the interactionData object as a JSON response to the client
     res.json(interactionData);
+    interactionData = {
+        interactions: []  // Store the interaction data here
+    };
+
 });
 
 app.post("/process-image", async (req, res) => {

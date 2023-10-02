@@ -108,12 +108,31 @@ $(document).ready(function () {
                 if (data.interactions.length > 0) {
                     // Display interactions on your web page
                     data.interactions.forEach(function (interaction) {
-                        $("#interactionList").append(
+                        var color;
+                        var text;
+                        if (interaction.severity === "high") {
+                            color = "color:red";
+                            text = "unsafe";
+                        }
+                        else if (interaction.severity === "medium") {
+                            color = "color:yellow";
+                            text = "yellow";
+                        }
+                        else {
+                            color = "color:green";
+                            text = "mild";
+                        }
+                        $(".anotherup").append(
+                            `<div class="upR">Inteaction` +
+                            '<ol>' +
                             "<li>" +
                             "Name: " + interaction.name + "<br>" +
-                            "Severity: " + interaction.severity + "<br>" +
-                            "Description: " + interaction.description +
-                            "</li>"
+                            "Description: " + interaction.description + "<br>" +
+                            "Safety Level: <span style=" +
+                            `${color};>${text}</span>` +
+                            "</li>" +
+                            `</ol>` +
+                            `</div>`
                         );
                     });
                 }
@@ -125,3 +144,6 @@ $(document).ready(function () {
 
     });
 });
+
+
+

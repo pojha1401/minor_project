@@ -16,6 +16,10 @@
             box-sizing: border-box;
         }
 
+        a {
+            color: white;
+        }
+
         body {
             font-size: 14px;
             background-color: #e0fbfc;
@@ -169,10 +173,13 @@
 
         /* Interaction Section */
         .up {
-            display: flex;
-            flex-direction: row;
             justify-content: space-between;
             align-items: stretch;
+        }
+
+        .anotherup {
+            display: flex;
+            flex-direction: column;
         }
 
         .upL,
@@ -291,8 +298,8 @@
             <!-- Left Content -->
             <div class="left">
                 <div class="top-sec">
-                    <div class="l1">Drug Name</div>
-                    <div class="r1">Medicine Name</div>
+                    <div class="l1"><a href="./index.html">Medicine Name</a></div>
+                    <div class="r1"><a href="./index2.html">Drug Name</a></div>
                 </div>
                 <div id="input-container">
                     <input type="text" class="drop-down autocomplete" placeholder="Medicine name" id="search" />
@@ -329,13 +336,13 @@
         <div class="in-2">
             <div class="up">
                 <!-- Interaction Safety Level -->
-                <div class="upL">Safety Level: <span style="color: red;">UNSAFE</span></div>
                 <!-- Unsafe Combination List -->
-                <div class="upR">Inteactions
-                    <ol>
-                        <li>Interaction One</li>
-                        <li>Interaction Two</li>
-                    </ol>
+                <div class="anotherup">
+                    <div class="upR">Inteaction
+                        <ol>
+
+                        </ol>
+                    </div>
                 </div>
             </div>
             <!-- Interaction Details -->
