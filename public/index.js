@@ -126,7 +126,8 @@ $(document).ready(function () {
                             `<div class="upR">Inteaction` +
                             '<ol>' +
                             "<li>" +
-                            "Name: " + interaction.name + "<br>" +
+                            "Name1:" + interaction.name1 + "<br>" +
+                            "Name2: " + interaction.name2 + "<br>" +
                             "Description: " + interaction.description + "<br>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +

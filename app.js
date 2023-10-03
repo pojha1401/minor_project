@@ -142,7 +142,8 @@ app.get("/submit", async (req, res) => {
             if (result2.length > 0) {
                 for (var i = 0; i < result2.length; i++) {
                     const interaction = {
-                        name: result2[i].interactionConcept[1].minConceptItem.name,
+                        name1: result2[i].interactionConcept[1].minConceptItem.name,
+                        name2: result2[i].interactionConcept[0].minConceptItem.name,
                         severity: result2[i].severity,
                         description: result2[i].description
                     };
