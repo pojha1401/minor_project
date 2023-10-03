@@ -123,7 +123,7 @@ $(document).ready(function () {
                             text = "mild";
                         }
                         $(".anotherup").append(
-                            `<div class="upR">Inteaction` +
+                            `<div class="upR">Interaction` +
                             '<ol>' +
                             "<li>" +
                             "Name1:" + interaction.name1 + "<br>" +
@@ -136,6 +136,10 @@ $(document).ready(function () {
                             `</div>`
                         );
                     });
+                } else {
+                    $('.list').append(
+                        `<li>"No interactions found"</li>`
+                    )
                 }
                 // Set the content of the result container with the HTML string
             })
@@ -146,5 +150,20 @@ $(document).ready(function () {
     });
 });
 
+$(".reset").click(function () {
+    location.reload();
+    fetch('/reset').then(function (response) {
+        if (response.status === 200) {
+            // Request was successful, handle it here
+            console.log("Request succeeded");
+        } else {
+            // Handle non-successful responses here
+            console.error("Request failed with status:", response.status);
+        }
+    })
+        .catch(function (err) {
+            console.error(err);
+        });
+});
 
 

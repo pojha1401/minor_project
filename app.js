@@ -24,11 +24,13 @@ const drugdata = JSON.parse(fs.readFileSync(("public/drug_data.json"), "utf-8"))
 
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/main.html");
-});
-app.get("/index.html", (req, res) => {
     res.sendFile(__dirname + "/test.html");
 });
+
+app.get("/test.html", (req, res) => {
+    res.sendFile(__dirname + "/test.html");
+})
+
 app.get("/index2.html", (req, res) => {
     res.sendFile(__dirname + "/index2.html");
 });
@@ -196,6 +198,11 @@ app.get("/submit", async (req, res) => {
         interactions: []  // Store the interaction data here
     };
 
+});
+
+app.get("/reset", (req, res) => {
+    rxcui = [];
+    medicine_list = [];
 });
 
 app.post("/process-image", async (req, res) => {
