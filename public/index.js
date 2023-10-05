@@ -126,11 +126,12 @@ $(document).ready(function () {
                             `<div class="upR">Interaction` +
                             '<ol>' +
                             "<li>" +
-                            "Name1:" + interaction.name1 + "<br>" +
-                            "Name2: " + interaction.name2 + "<br>" +
-                            "Description: " + interaction.description + "<br>" +
+                            "<p>Name1:" + interaction.name1 + "</p>" +
+                            "<p>Name2: " + interaction.name2 + "</p>" +
+                            "<p>Description: " + interaction.description + "</p>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +
+                            `<button class="getMoreInfo">Get More Info</button>` +
                             "</li>" +
                             `</ol>` +
                             `</div>`
@@ -150,20 +151,41 @@ $(document).ready(function () {
     });
 });
 
-$(".reset").click(function () {
-    location.reload();
-    fetch('/reset').then(function (response) {
-        if (response.status === 200) {
-            // Request was successful, handle it here
-            console.log("Request succeeded");
-        } else {
-            // Handle non-successful responses here
-            console.error("Request failed with status:", response.status);
+$(document).on("click", ".getMoreInfo", function () {
+    // Store a reference to the clicked button
+    const clickedButton = $(this);
+
+    console.log(4);
+    // Find the parent div of the clicked button
+    const dataDiv = clickedButton.closest('.upR');
+    console.log(dataDiv);
+
+    // Extract data from the div using jQuery
+    const name1 = dataDiv.find('p:nth-child(1)').text();
+    const name2 = dataDiv.find('p:nth-child(2)').text();
+    const name3 = name1 + "," + name2;
+    console.log(name3);
+
+    // Make an AJAX POST request using jQuery
+    $.ajax({
+        url: "/drug-interaction",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ name: name3 }),
+        success: function (data) {
+            console.log(data);
+
+            // Access the drugInteractionDetail from the response data
+            const druginteractionDetail = data.drugInteractionDetail;
+
+            // Append the drugInteractionDetail to the clicked button's parent div
+            dataDiv.append("<p>" + druginteractionDetail + "</p>");
+        },
+        error: function () {
+            console.error("Network response was not ok");
         }
-    })
-        .catch(function (err) {
-            console.error(err);
-        });
+    });
 });
+
 
 

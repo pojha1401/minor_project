@@ -7,6 +7,7 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import { Hercai } from 'hercai';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const port = 3000;
@@ -71,7 +72,7 @@ app.post("/contact", async function (req, res) {
                     // const severity = result2.interactionTypeGroup[0].interactionType[0].severity;
                     // const minConceptName = result2.interactionTypeGroup[0].interactionType[0].minConceptItem.name;
                     // console.log(severity, minConceptName);
-                    res.status(200);
+                    res.status(200).send("OK");
                 }
             }
         } // Send a simple success message
@@ -233,6 +234,33 @@ app.post("/process-image", async (req, res) => {
         });
     });
 });
+
+app.post('/drug-interaction', async (req, res) => {
+    const name = req.body.name
+    const example = name;
+    console.log(example);
+    const drugInteractionDetail = await getDrugInteraction(example);
+
+    res.json({
+        drugInteractionDetail,
+    });
+});
+
+async function getDrugInteraction(drugNames) {
+    const herc = new Hercai();
+
+    try {
+        const response = await herc.question({
+            model: "v2",
+            content: `why do ${drugNames} interect together? Please provide a brief answer in 200 words including biological terms`
+        });
+
+        return response.reply;
+    } catch (error) {
+        console.error("Error:", error);
+        return "error related to hercai";
+    }
+}
 
 
 app.listen(port, () => {
