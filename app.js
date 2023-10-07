@@ -52,28 +52,33 @@ app.post("/contact", async function (req, res) {
             if (matchingMedicine) {
                 const saltName = matchingMedicine.salt;
                 const drugArray = saltName.split(" + ");
-                for (var j = 0; j < drugArray.length; j++) {
-                    const singleName = drugArray[j];
-                    console.log(singleName);
-                    const myarray = singleName.split(" ");
-                    let s = "";
-                    for (var i = 0; i < myarray.length - 1; i++) {
-                        if (myarray.length > 1) {
-                            s = s + myarray[i] + "+";
-                        }
-                    }
-                    console.log(s);
-                    const response0 = await axios.get(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${s}&search=1`)
-                    const result = await response0.data;
-                    const toInt = await result.idGroup.rxnormId[0];
-                    rxcui.push(toInt);
-                    console.log(toInt);
 
-                    // const severity = result2.interactionTypeGroup[0].interactionType[0].severity;
-                    // const minConceptName = result2.interactionTypeGroup[0].interactionType[0].minConceptItem.name;
-                    // console.log(severity, minConceptName);
-                    res.status(200).send("OK");
-                }
+                // Create a function that returns a promise to handle the loop
+                const processDrugArray = async () => {
+                    for (var j = 0; j < drugArray.length; j++) {
+                        const singleName = drugArray[j];
+                        console.log(singleName);
+                        const myarray = singleName.split(" ");
+                        let s = "";
+                        for (var i = 0; i < myarray.length - 1; i++) {
+                            if (myarray.length > 1) {
+                                s = s + myarray[i] + "+";
+                            }
+                        }
+                        console.log(s);
+                        const response0 = await axios.get(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${s}&search=1`);
+                        const result = await response0.data;
+                        const toInt = await result.idGroup.rxnormId[0];
+                        rxcui.push(toInt);
+                        console.log(toInt);
+                    }
+                };
+
+                // Call the function and wait for it to complete
+                await processDrugArray();
+
+                // Send the status code after the loop has completed
+                res.status(200).send("OK");
             }
         } // Send a simple success message
     } catch (error) {
