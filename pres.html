@@ -243,7 +243,7 @@
             gap: 10%;
         }
 
-        .bottom-buttons>button {
+        .input-container>button {
             background-color: #293241;
             color: white;
             border: none;
@@ -275,8 +275,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active text-white" aria-current="page" href="./index3.html">Prescription
-                        Checker</a>
+                    <a class="nav-link active text-white" aria-current="page" href="./index3.html">
+                        </a>
                 </div>
             </div>
         </div>
@@ -324,9 +324,43 @@
                     <div class="r1"><a href="./index2.html">Drug Name</a></div>
                 </div>
                 <div id="input-container">
-                    <input type="text" class="drop-down autocomplete" placeholder="Medicine name" id="search" />
-                    <ul id="interactionList">
-                    </ul>
+                    <h3>Upload Prescription</h3>
+    <input type="file" id="imageInput">
+    <button onclick="uploadImage()" style="background-color: #293241;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    width: 200px;
+    font-weight: 400;
+    font-weight: bolder;
+    border-radius: 20px;">Upload</button>
+    <div id="imagePreview"></div>
+    <button onclick="processImage()" style="background-color: #293241;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    width: 200px;
+    font-weight: 400;
+    font-weight: bolder;
+    border-radius: 20px;">Process Image</button>
+    <div id="processingResult"></div>
+    <button class="submit"style="background-color: #293241;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    width: 200px;
+    font-weight: 400;
+    font-weight: bolder;
+    border-radius: 20px;">submit</button>
+    <button class="hello" style="background-color: #293241;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    width: 200px;
+    font-weight: 400;
+    font-weight: bolder;
+    border-radius: 20px;">hello</button>
+    <ul class="anotherup"></ul>
 
                     <div class="bt-section">
                         <button class="reset" onclick="window.location.reload();">Reset</button>
@@ -399,6 +433,6 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="index.js"></script>
+<script src="index3.js"></script>
 
 </html>
