@@ -69,8 +69,11 @@ app.post("/contact", async function (req, res) {
                         const response0 = await axios.get(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${s}&search=1`);
                         const result = await response0.data;
                         const toInt = await result.idGroup.rxnormId[0];
-                        rxcui.push(toInt);
-                        console.log(toInt);
+                        if (!rxcui.includes(toInt)) {
+                            rxcui.push(toInt);
+                            console.log(toInt);
+                        }
+
                     }
                 };
 
