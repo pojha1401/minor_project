@@ -93,8 +93,10 @@ document.getElementById("add").addEventListener("click", function () {
 });
 
 $(document).ready(function () {
+
     $(".submit").click(function () {
         console.log("1");
+        $(".in-2").css("visibility", "visible");
         // Make an AJAX POST request to /submit
         fetch('/submit')
             .then(response => {
@@ -122,21 +124,19 @@ $(document).ready(function () {
                             color = "color:green";
                             text = "mild";
                         }
-                        $(".anotherup").append(
-                            `<div class="upR">Interaction` +
-                            '<ol>' +
+                        $(".list").append(
                             "<li>" +
                             "<p>Name1:" + interaction.name1 + "</p>" +
                             "<p>Name2: " + interaction.name2 + "</p>" +
                             "<p>Description: " + interaction.description + "</p>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +
-                            `<button class="getMoreInfo">Get More Info</button>` +
-                            "</li>" +
-                            `</ol>` +
-                            `</div>`
+                            `<button class="getMoreInfo" onclick="document.getElementsByClassName('down')[0].style.visibility = 'visible'; " style="background-color:#c9c9c94d; border:none; border-radius:10px; margin-left:10px; color: white; padding:4px;"
+                            >Get More Info</button>` +
+                            "</li>"
                         );
                     });
+                    
                 } else {
                     $('.list').append(
                         `<li>"No interactions found"</li>`
@@ -175,7 +175,6 @@ $(document).on("click", ".getMoreInfo", function () {
     // Find the parent div of the clicked button
     const dataDiv = clickedButton.closest('.upR');
     console.log(dataDiv);
-
     // Extract data from the div using jQuery
     const name1 = dataDiv.find('p:nth-child(1)').text();
     const name2 = dataDiv.find('p:nth-child(2)').text();
@@ -193,9 +192,9 @@ $(document).on("click", ".getMoreInfo", function () {
 
             // Access the drugInteractionDetail from the response data
             const druginteractionDetail = data.drugInteractionDetail;
-
+            $(".down").css("visibility", "visible");
             // Append the drugInteractionDetail to the clicked button's parent div
-            dataDiv.append("<p>" + druginteractionDetail + "</p>");
+            $(".det").append("<li>" + druginteractionDetail + "</li>"); 
         },
         error: function () {
             console.error("Network response was not ok");
