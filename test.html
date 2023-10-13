@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href="https://unpkg.com/css.gg@2.0.0/icons/css/profile.css" rel="stylesheet" />
-    <title>MedAlert</title>
+    <title>test</title>
     <style>
         /* Reset CSS */
         * {
@@ -51,7 +51,7 @@
             margin-top: 30px;
             font-weight: 500;
             color: white;
-            height: 40px;
+            height: auto;
         }
 
         .in-2 {
@@ -92,7 +92,7 @@
 
         /* Left Section */
         .left {
-            flex-basis: 60%;
+            flex-basis: 70%;
             background-color: #3D5A80;
             margin-right: 30px;
             margin-left: 0;
@@ -127,17 +127,21 @@
 
         /* Button Section */
         .bt-section {
+            margin: auto;
             border: none;
             color: white;
             border-radius: 22px;
-            min-width: 500px;
+            width: 100%;
+            /* min-width: 500px; */
             font-size: large;
             padding: 10px;
             width: 80%;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 100px;
-            margin-bottom: 10px;
+            gap: 4vw;
+            /* margin-right: 0;
+            margin-bottom: 10px; */
 
         }
 
@@ -146,11 +150,12 @@
             color: white;
             border: none;
             padding: 8px;
-            width: 100px;
+            /* width: 100px ; */
             font-weight: 400;
             border-radius: 20px;
             font-size: small;
             font-weight: bold;
+
         }
 
         /* Top Section */
@@ -198,9 +203,32 @@
             border-radius: 20px;
             margin: 20px;
         }
-
         /* Responsive Layout */
-        @media screen and (max-width: 850px) {
+        @media (max-width: 650px){
+           
+            .in-2{
+                padding: 10px;
+                /* height: auto; */
+            }
+            .bt-section{
+
+            }
+            #search{
+                width:100px;
+            }
+            .down{
+                padding: 10px;
+                margin: 10px;
+            }
+            .upR{
+                padding: 10px;
+                margin: 10px;
+            }
+            #search{
+                scale:0.6;
+            }
+        }
+        @media screen and (max-width: 980px) {
 
             .upL,
             .upR {
@@ -262,6 +290,7 @@
             height: 0px;
             margin: 0px;
         }
+        
     </style>
 </head>
 
@@ -315,7 +344,7 @@
         <div class="cont">
             <!-- Left Content -->
             <div class="left">
-                <div class="top-sec">
+                <div class="top-sec" style="margin-bottom: 30px; margin-top: 0;">
                     <div class="l1">
                         <a href="./test.html">
                             Medicine Name
@@ -328,7 +357,7 @@
                     <ul id="interactionList">
                     </ul>
 
-                    <div class="bt-section">
+                    <div class="bt-section" style="margin-bottom: 20px;">
                         <button class="reset" onclick="window.location.reload();">Reset</button>
                         <button id="add" style="width: 130px;">Add medicine</button>
                         <button class="submit">Submit</button>
@@ -346,9 +375,6 @@
                         </li>
                         <li>
                             Consult healthcare professionals for personalized guidance.
-                        </li>
-                        <li>
-                            In emergencies, contact medical professionals immediately.
                         </li>
                         <li>
                             This app offers guidance, but it's not a substitute for professional expertise.
