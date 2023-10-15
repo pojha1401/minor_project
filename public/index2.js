@@ -94,9 +94,11 @@ document.getElementById("add").addEventListener("click", function () {
     // Set up autocomplete for the new input element
     setupAutocomplete(newInput);
 });
+
 $(document).ready(function () {
     $(".submit").click(function () {
         console.log("1");
+        $(".in-2").css("visibility", "visible");
         // Make an AJAX POST request to /submit
         fetch('/submit')
             .then(response => {
@@ -193,9 +195,16 @@ $(document).on("click", ".getMoreInfo", function () {
 
             // Access the drugInteractionDetail from the response data
             const druginteractionDetail = data.drugInteractionDetail;
+            
+            
+            
             $(".down").css("visibility", "visible");
+
+
+
             // Append the drugInteractionDetail to the clicked button's parent div
-            dataDiv.append("<li>" + druginteractionDetail + "</li>");
+            // dataDiv.append("<li>" + druginteractionDetail + "</li>");
+            $(".det").append("<li>" + druginteractionDetail + "</li>");
         },
         error: function () {
             console.error("Network response was not ok");
