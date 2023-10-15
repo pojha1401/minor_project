@@ -126,12 +126,13 @@ $(document).ready(function () {
                             `<div class="upR">Interaction` +
                             '<ol>' +
                             "<li>" +
-                            "<p>Name1:" + interaction.name1 + "</p>" +
-                            "<p>Name2: " + interaction.name2 + "</p>" +
-                            "<p>Description: " + interaction.description + "</p>" +
+                            `<p>Name1:` + interaction.name1 + "</p>" +
+                            `<p>Name2:` + interaction.name2 + "</p>" +
+                            `<p>Description:` + interaction.description + "</p>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +
-                            `<button class="getMoreInfo">Get More Info</button>` +
+                            `<button class="getMoreInfo" onclick="document.getElementsByClassName('down')[0].style.visibility = 'visible'; " style="background-color:#c9c9c94d; border:none; border-radius:10px; margin-left:10px; color: white; padding:4px;"
+                            >Get More Info</button>` +
                             "</li>" +
                             `</ol>` +
                             `</div>`
@@ -151,22 +152,30 @@ $(document).ready(function () {
     });
 });
 
-$(document).on("click", ".getMoreInfo", function () {
-    // Store a reference to the clicked button
-    const clickedButton = $(this);
+$(".reset").click(function () {
+    location.reload();
+    fetch('/reset').then(function (response) {
+        if (response.status === 200) {
+            // Request was successful, handle it here
+            console.log("Request succeeded");
+        } else {
+            // Handle non-successful responses here
+            console.error("Request failed with status:", response.status);
+        }
+    })
+        .catch(function (err) {
+            console.error(err);
+        });
+});
 
-    console.log(4);
-    // Find the parent div of the clicked button
+$(document).on("click", ".getMoreInfo", function () {
+    const clickedButton = $(this);
     const dataDiv = clickedButton.closest('.upR');
     console.log(dataDiv);
-
-    // Extract data from the div using jQuery
     const name1 = dataDiv.find('p:nth-child(1)').text();
     const name2 = dataDiv.find('p:nth-child(2)').text();
     const name3 = name1 + "," + name2;
-    console.log(name3);
 
-    // Make an AJAX POST request using jQuery
     $.ajax({
         url: "/drug-interaction",
         method: "POST",
@@ -174,15 +183,11 @@ $(document).on("click", ".getMoreInfo", function () {
         data: JSON.stringify({ name: name3 }),
         success: function (data) {
             console.log(data);
-
-            // Access the drugInteractionDetail from the response data
             const druginteractionDetail = data.drugInteractionDetail;
-
-            // Append the drugInteractionDetail to the clicked button's parent div
-            dataDiv.append("<p>" + druginteractionDetail + "</p>");
+            $('.det').append("<p>Details about interaction between " + name1 + " and " + name2 + "</p><br><p>" + druginteractionDetail + "</p><br>");
         },
-        error: function () {
-            console.error("Network response was not ok");
+        error: function (xhr, status, error) {
+            console.error("Request failed with status:", status, error);
         }
     });
 });

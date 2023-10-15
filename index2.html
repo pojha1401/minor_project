@@ -16,6 +16,11 @@
             box-sizing: border-box;
         }
 
+        p {
+            margin: 0;
+            margin-bottom: 0;
+        }
+
         a {
             color: white;
         }
@@ -47,7 +52,7 @@
             margin-top: 30px;
             font-weight: 500;
             color: white;
-            height: 40px;
+            height: auto;
         }
 
         .in-2 {
@@ -63,6 +68,7 @@
             font-weight: 500;
             color: white;
             margin-bottom: 30px;
+
         }
 
         /* Navigation Bar */
@@ -86,7 +92,7 @@
 
         /* Left Section */
         .left {
-            flex-basis: 60%;
+            flex-basis: 70%;
             background-color: #3D5A80;
             margin-right: 30px;
             margin-left: 0;
@@ -121,17 +127,21 @@
 
         /* Button Section */
         .bt-section {
+            margin: auto;
             border: none;
             color: white;
             border-radius: 22px;
-            min-width: 500px;
+            width: 100%;
+            /* min-width: 500px; */
             font-size: large;
             padding: 10px;
             width: 80%;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 100px;
-            margin-bottom: 10px;
+            gap: 4vw;
+            /* margin-right: 0;
+        margin-bottom: 10px; */
 
         }
 
@@ -139,10 +149,13 @@
             background-color: #293241;
             color: white;
             border: none;
-            padding: 6px 16px;
-            width: 100px;
+            padding: 8px;
+            /* width: 100px ; */
             font-weight: 400;
             border-radius: 20px;
+            font-size: small;
+            font-weight: bold;
+
         }
 
         /* Top Section */
@@ -163,12 +176,12 @@
 
         .l1 {
             background-color: #293241;
-            border-radius: 20px 0 0 0;
+            border-radius: 0 20px 0 0;
         }
 
         .r1 {
             background-color: #3e72ae45;
-            border-radius: 0 20px 0 0;
+            border-radius: 20px 0 0 0;
         }
 
         /* Interaction Section */
@@ -192,7 +205,35 @@
         }
 
         /* Responsive Layout */
-        @media screen and (max-width: 850px) {
+        @media (max-width: 650px) {
+
+            .in-2 {
+                padding: 10px;
+                /* height: auto; */
+            }
+
+            .bt-section {}
+
+            #search {
+                width: 100px;
+            }
+
+            .down {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .upR {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            #search {
+                scale: 0.6;
+            }
+        }
+
+        @media screen and (max-width: 980px) {
 
             .upL,
             .upR {
@@ -245,6 +286,22 @@
             font-weight: bolder;
             border-radius: 20px;
         }
+
+        .ol-li>li {
+            padding-top: 0;
+            padding: 3px;
+        }
+
+        .hide {
+            visibility: hidden;
+            height: 0px;
+            margin: 0px;
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.678);
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -266,7 +323,7 @@
     </nav>
     <div class="man">
         <!-- Medication Browse Section -->
-        <div class="in-1">
+        <div class="in-1 hide">
             <div class="item">Browse all medications: </div>
             <div class="item">A</div>
             <div class="item">C</div>
@@ -298,7 +355,7 @@
         <div class="cont">
             <!-- Left Content -->
             <div class="left">
-                <div class="top-sec">
+                <div class="top-sec" style="margin-bottom: 30px; margin-top: 0;">
                     <div class="r1"><a href="./test.html">Medicine Name</a></div>
                     <div class="l1"><a href="./index2.html">Drug Name</a></div>
                 </div>
@@ -307,7 +364,7 @@
                     <ul id="interactionList">
                     </ul>
 
-                    <div class="bt-section">
+                    <div class="bt-section" style="margin-bottom: 20px;">
                         <button class="reset">Reset</button>
                         <button id="add">Add medicine</button>
                         <button class="submit">Submit</button>
@@ -318,11 +375,18 @@
             <div class="right">
                 <p>
                 <h6>Details</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Nibh tellus molestie nunc non blandit massa enim nec. Porttitor massa id
-                    neque aliquam vestibulum morbi blandit. Mi in nulla posuere sollicitudin aliquam ultrices. Gravida
-                    in fermentum et sollicitudin ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tell</p>
+                <p>
+                <ol style="padding: 10px; font-weight: 400;" class="ol-li">
+                    <li>
+                        Use as an information source, not a replacement for a doctor's advice.
+                    </li>
+                    <li>
+                        Consult healthcare professionals for personalized guidance.
+                    </li>
+                    <li>
+                        This app offers guidance, but it's not a substitute for professional expertise.
+                    </li>
+                </ol>
                 </p>
             </div>
         </div>
@@ -348,31 +412,12 @@
             </div>
             <!-- Interaction Details -->
             <div class="down">
+                <!-- <div class="down" style="visibility: hidden;"> -->
                 <h5>Details</h5>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi vero libero veniam, eligendi,
-                    quo assumenda eos neque labore vel fugit possimus voluptate minima odio. Hic facere voluptatibus,
-                    alias repellat sint vitae vero libero incidunt cupiditate perferendis dolor cumque nemo adipisci
-                    error accusantium harum id ipsam. Quaerat quae eum laborum excepturi ullam exercitationem et vitae
-                    architecto pariatur dolore nihil, blanditiis facere modi ipsa sunt quod fuga suscipit, libero in
-                    similique? Tempora quo totam iste, non deserunt aspernatur ipsa quasi maxime quia? Ipsam fugiat
-                    repudiandae, architecto dignissimos modi atque hic quam explicabo doloribus officiis maxime, commodi
-                    natus. Quam nostrum, natus eligendi atque, laudantium inventore voluptates ex omnis quae possimus in
-                    facilis. Ratione nihil tenetur vitae excepturi hic optio ad, dignissimos blanditiis autem quis
-                    aperiam praesentium deleniti voluptatibus cupiditate, incidunt corrupti? Facilis rem possimus id
-                    ipsa quas doloribus tempore illum deleniti quia asperiores vero enim est temporibus autem impedit
-                    iste harum ut maxime laboriosam accusamus, eum similique perspiciatis consequatur voluptate! Ad
-                    ducimus, magni ullam delectus deserunt optio aliquid soluta quibusdam rem architecto eligendi
-                    laborum nostrum esse. Soluta necessitatibus distinctio, ducimus similique tempore quasi? Labore
-                    libero totam iusto iure maiores porro dolor debitis quae aspernatur veritatis voluptate accusantium
-                    quibusdam, ipsa fugit optio doloremque quasi animi perferendis maxime nam! Architecto, placeat!
-                    Eligendi officiis cum laudantium cupiditate ipsum dicta! Minima mollitia et cum nisi dolore. Qui
-                    fugit id cum inventore, voluptatibus enim soluta sed! Enim doloribus est ex? Deserunt, at harum. In
-                    animi expedita ipsa enim repellendus maxime, incidunt et ipsam assumenda velit vel nobis! Quaerat ut
-                    facere dolores quam beatae alias suscipit praesentium natus totam quo deleniti, soluta aliquam
-                    consectetur est. Architecto dignissimos recusandae deserunt magni amet, repudiandae voluptate
-                    quisquam unde possimus culpa. Quod beatae, vero tenetur consectetur excepturi quae a adipisci ad
-                    impedit molestias, ab tempore fugit sunt architecto ducimus? Aspernatur, animi sunt! Fugiat!
+                <ol class="det">
+
+                </ol>
                 </p>
             </div>
             <div>

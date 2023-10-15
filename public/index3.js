@@ -104,6 +104,7 @@ async function processImage() {
 $(document).ready(function () {
     $(".hello").click(function () {
         console.log("1");
+        $(".in-2").css("visibility", "visible");
         // Make an AJAX POST request to /submit
         fetch('/submit')
             .then(response => {
@@ -131,20 +132,22 @@ $(document).ready(function () {
                             color = "color:green";
                             text = "mild";
                         }
-                        $(".anotherup").append(
-                            `<div class="upR">Inteaction` +
-                            '<ol>' +
+                        $(".list").append(
                             "<li>" +
-                            "Name1:" + interaction.name1 + "<br>" +
-                            "Name2: " + interaction.name2 + "<br>" +
-                            "Description: " + interaction.description + "<br>" +
+                            "<p>Name1:" + interaction.name1 + "</p>" +
+                            "<p>Name2: " + interaction.name2 + "</p>" +
+                            "<p>Description: " + interaction.description + "</p>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +
-                            "</li>" +
-                            `</ol>` +
-                            `</div>`
+                            `<button class="getMoreInfo" onclick="document.getElementsByClassName('down')[0].style.visibility = 'visible'; " style="background-color:#c9c9c94d; border:none; border-radius:10px; margin-left:10px; color: white; padding:4px;"
+                            >Get More Info</button>` +
+                            "</li>"
                         );
                     });
+                } else {
+                    $('.list').append(
+                        `<li>"No interactions found"</li>`
+                    )
                 }
                 // Set the content of the result container with the HTML string
             })
@@ -152,5 +155,48 @@ $(document).ready(function () {
                 console.error('There was a problem with the fetch operation:', error);
             });
 
+    });
+});
+
+$(document).on("click", ".getMoreInfo", function () {
+    // Store a reference to the clicked button
+    const clickedButton = $(this);
+
+    console.log(4);
+    // Find the parent div of the clicked button
+    const dataDiv = clickedButton.closest('.upR');
+    console.log(dataDiv);
+
+    // Extract data from the div using jQuery
+    const name1 = dataDiv.find('p:nth-child(1)').text();
+    const name2 = dataDiv.find('p:nth-child(2)').text();
+    const name3 = name1 + "," + name2;
+    console.log(name3);
+
+    // Make an AJAX POST request using jQuery
+    $.ajax({
+        url: "/drug-interaction",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ name: name3 }),
+        success: function (data) {
+            console.log(data);
+
+            // Access the drugInteractionDetail from the response data
+            const druginteractionDetail = data.drugInteractionDetail;
+
+
+
+            $(".down").css("visibility", "visible");
+
+
+
+            // Append the drugInteractionDetail to the clicked button's parent div
+            // dataDiv.append("<li>" + druginteractionDetail + "</li>");
+            $(".det").append("<li>" + druginteractionDetail + "</li>");
+        },
+        error: function () {
+            console.error("Network response was not ok");
+        }
     });
 });
