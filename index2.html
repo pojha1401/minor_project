@@ -1,251 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href="https://unpkg.com/css.gg@2.0.0/icons/css/profile.css" rel="stylesheet" />
-    <title>MedAlert</title>
+    <title>test</title>
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        a {
-            color: white;
-        }
+    p {
+        margin: 0;
+    }
 
-        body {
-            font-size: 14px;
-            background-color: #e0fbfc;
-            width: 100vw;
-        }
+    a {
+        color: white;
+    }
 
-        /* Main Container */
-        .man {
-            display: flex;
-            justify-content: center;
-            width: 100vw;
-            flex-wrap: wrap;
-        }
+    body {
+        font-size: 14px;
+        background-color: #e0fbfc;
+        width: 100vw;
+    }
 
-        /* Header Section */
-        .in-1 {
-            background-color: #3D5A80;
-            flex-direction: row;
-            border-radius: 22px;
-            width: 90vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px;
-            margin-top: 30px;
-            font-weight: 500;
-            color: white;
-            height: 40px;
-        }
+    /* Main Container */
+    .man {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        flex-wrap: wrap;
+    }
 
-        .in-2 {
-            background-color: #3D5A80;
-            border-radius: 22px;
-            width: 90vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: space-between;
-            flex-direction: column;
-            padding: 30px;
-            margin-top: 30px;
-            font-weight: 500;
-            color: white;
-            margin-bottom: 30px;
-        }
+    /* Header Section */
+    .in-1 {
+        background-color: #3D5A80;
+        flex-direction: row;
+        border-radius: 22px;
+        width: 90vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+        margin-top: 30px;
+        font-weight: 500;
+        color: white;
+        height: auto;
+    }
 
-        /* Navigation Bar */
-        .navbar {
-            background-color: #293241;
-        }
+    .in-2 {
+        background-color: #3D5A80;
+        border-radius: 22px;
+        width: 90vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: space-between;
+        flex-direction: column;
+        padding: 30px;
+        margin-top: 30px;
+        font-weight: 500;
+        color: white;
+        margin-bottom: 30px;
+        visibility: hidden;
+        
+    }
 
-        .navbar-brand {
-            font-weight: 500;
-        }
+    /* Navigation Bar */
+    .navbar {
+        background-color: #293241;
+    }
 
-        /* Content Container */
-        .cont {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            margin: 20px;
-            width: 90vw;
-            color: white;
-        }
+    .navbar-brand {
+        font-weight: 500;
+    }
 
-        /* Left Section */
-        .left {
-            flex-basis: 60%;
-            background-color: #3D5A80;
-            margin-right: 30px;
-            margin-left: 0;
-            border-radius: 22px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-        }
+    /* Content Container */
+    .cont {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        margin: 20px;
+        width: 90vw;
+        color: white;
+    }
 
-        /* Right Section */
-        .right {
-            flex-basis: 40%;
-            background-color: #3D5A80;
-            padding: 20px;
-            border-radius: 22px;
-        }
+    /* Left Section */
+    .left {
+        flex-basis: 70%;
+        background-color: #3D5A80;
+        margin-right: 30px;
+        margin-left: 0;
+        border-radius: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-        /* Form Inputs */
-        .drop-down {
-            background-color: #c9c9c949;
-            border: none;
-            color: white;
-            border-radius: 22px;
-            min-width: 500px;
-            font-size: large;
+    /* Right Section */
+    .right {
+        flex-basis: 40%;
+        background-color: #3D5A80;
+        padding: 20px;
+        border-radius: 22px;
+    }
+
+    /* Form Inputs */
+    .drop-down {
+        background-color: #c9c9c949;
+        border: none;
+        color: white;
+        border-radius: 22px;
+        min-width: 500px;
+        font-size: large;
+        padding: 10px;
+        margin: 10px;
+        width: 80%;
+    }
+
+    /* Button Section */
+    .bt-section {
+        margin: auto;
+        border: none;
+        color: white;
+        border-radius: 22px;
+        width: 100%;
+        /* min-width: 500px; */
+        font-size: large;
+        padding: 10px;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4vw;
+        /* margin-right: 0;
+        margin-bottom: 10px; */
+
+    }
+
+    .bt-section>button {
+        background-color: #293241;
+        color: white;
+        border: none;
+        padding: 8px;
+        /* width: 100px ; */
+        font-weight: 400;
+        border-radius: 20px;
+        font-size: small;
+        font-weight: bold;
+
+    }
+
+    /* Top Section */
+    .top-sec {
+        display: flex;
+        width: 100%;
+    }
+
+    .l1,
+    .r1 {
+        flex-basis: 50%;
+        display: flex;
+        padding: 10px;
+        font-weight: bolder;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .l1 {
+        background-color: #293241;
+        border-radius: 0 20px 0 0;
+    }
+
+    .r1 {
+        background-color: #3e72ae45;
+        border-radius: 20px 0 0 0;
+    }
+
+    /* Interaction Section */
+    .up {
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .anotherup {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .upL,
+    .upR {
+        flex-basis: 50%;
+        background-color: #c9c9c94d;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 20px;
+    }
+    /* Responsive Layout */
+    @media (max-width: 650px){
+       
+        .in-2{
+            padding: 10px;
+            /* height: auto; */
+        }
+        .bt-section{
+
+        }
+        #search{
+            width:100px;
+        }
+        .down{
             padding: 10px;
             margin: 10px;
-            width: 80%;
         }
-
-        /* Button Section */
-        .bt-section {
-            border: none;
-            color: white;
-            border-radius: 22px;
-            min-width: 500px;
-            font-size: large;
+        .upR{
             padding: 10px;
-            width: 80%;
-            display: flex;
-            justify-content: center;
-            gap: 100px;
-            margin-bottom: 10px;
-
+            margin: 10px;
         }
-
-        .bt-section>button {
-            background-color: #293241;
-            color: white;
-            border: none;
-            padding: 6px 16px;
-            width: 100px;
-            font-weight: 400;
-            border-radius: 20px;
+        #search{
+            scale:0.6;
         }
-
-        /* Top Section */
-        .top-sec {
-            display: flex;
-            width: 100%;
-        }
-
-        .l1,
-        .r1 {
-            flex-basis: 50%;
-            display: flex;
-            padding: 10px;
-            font-weight: bolder;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .l1 {
-            background-color: #293241;
-            border-radius: 20px 0 0 0;
-        }
-
-        .r1 {
-            background-color: #3e72ae45;
-            border-radius: 0 20px 0 0;
-        }
-
-        /* Interaction Section */
-        .up {
-            justify-content: space-between;
-            align-items: stretch;
-        }
-
-        .anotherup {
-            display: flex;
-            flex-direction: column;
-        }
+    }
+    @media screen and (max-width: 980px) {
 
         .upL,
         .upR {
-            flex-basis: 50%;
-            background-color: #c9c9c94d;
-            padding: 20px;
-            border-radius: 20px;
-            margin: 20px;
+            flex-basis: 100%;
+            margin-top: 20px;
         }
 
-        /* Responsive Layout */
-        @media screen and (max-width: 850px) {
-
-            .upL,
-            .upR {
-                flex-basis: 100%;
-                margin-top: 20px;
-            }
-
-            .cont {
-                flex-direction: column;
-            }
-
-            .left {
-                flex-basis: 100%;
-                margin-right: 0;
-            }
-
-            .right {
-                flex-basis: 100%;
-                margin-top: 30px;
-            }
-
-            .up {
-                flex-direction: column;
-            }
-
+        .cont {
+            flex-direction: column;
         }
 
-        /* Warning Section */
-        .down {
-            background-color: #c9c9c94d;
-            padding: 20px;
-            border-radius: 20px;
-            margin: 20px;
+        .left {
+            flex-basis: 100%;
+            margin-right: 0;
         }
 
-        .bottom-buttons {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 10%;
+        .right {
+            flex-basis: 100%;
+            margin-top: 30px;
         }
 
-        .bottom-buttons>button {
-            background-color: #293241;
-            color: white;
-            border: none;
-            padding: 6px 16px;
-            width: 200px;
-            font-weight: 400;
-            font-weight: bolder;
-            border-radius: 20px;
+        .up {
+            flex-direction: column;
         }
-    </style>
+
+    }
+
+    /* Warning Section */
+    .down {
+        background-color: #c9c9c94d;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 20px;
+    }
+
+    .bottom-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10%;
+    }
+
+    .bottom-buttons>button {
+        background-color: #293241;
+        color: white;
+        border: none;
+        padding: 6px 16px;
+        width: 200px;
+        font-weight: 400;
+        font-weight: bolder;
+        border-radius: 20px;
+    }
+    .ol-li > li  {
+        padding-top: 0;
+        padding: 3px;
+    }
+    .hide {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+    }
+    ::placeholder{
+        color: rgba(255, 255, 255, 0.678);
+        opacity: 1;
+    }
+    
+</style>
 </head>
 
 <body>
@@ -266,7 +314,7 @@
     </nav>
     <div class="man">
         <!-- Medication Browse Section -->
-        <div class="in-1">
+        <div class="in-1 hide">
             <div class="item">Browse all medications: </div>
             <div class="item">A</div>
             <div class="item">C</div>
@@ -298,7 +346,7 @@
         <div class="cont">
             <!-- Left Content -->
             <div class="left">
-                <div class="top-sec">
+                <div class="top-sec" style="margin-bottom: 30px; margin-top: 0;"    >
                     <div class="r1"><a href="./test.html">Medicine Name</a></div>
                     <div class="l1"><a href="./index2.html">Drug Name</a></div>
                 </div>
@@ -307,9 +355,9 @@
                     <ul id="interactionList">
                     </ul>
 
-                    <div class="bt-section">
+                    <div class="bt-section" style="margin-bottom: 20px;">
                         <button class="reset">Reset</button>
-                        <button id="add">Add medicine</button>
+                        <button id="add" style="width: 130px;">Add medicine</button>
                         <button class="submit">Submit</button>
                     </div>
                 </div>
@@ -318,11 +366,18 @@
             <div class="right">
                 <p>
                 <h6>Details</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Nibh tellus molestie nunc non blandit massa enim nec. Porttitor massa id
-                    neque aliquam vestibulum morbi blandit. Mi in nulla posuere sollicitudin aliquam ultrices. Gravida
-                    in fermentum et sollicitudin ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tell</p>
+                <p>
+                    <ol style="padding: 10px; font-weight: 400;" class="ol-li">
+                        <li>
+                            Use as an information source, not a replacement for a doctor's advice.
+                        </li>
+                        <li>
+                            Consult healthcare professionals for personalized guidance.
+                        </li>
+                        <li>
+                            This app offers guidance, but it's not a substitute for professional expertise.
+                        </li>
+                    </ol>
                 </p>
             </div>
         </div>
@@ -340,52 +395,26 @@
                 <!-- Unsafe Combination List -->
                 <div class="anotherup">
                     <div class="upR">Inteaction
-                        <ul class="list">
+                        <ol class="list">
 
-                        </ul>
+                        </ol>
                     </div>
                 </div>
             </div>
             <!-- Interaction Details -->
-            <div class="down">
+            <div class="down" style="visibility: hidden;">
                 <h5>Details</h5>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi vero libero veniam, eligendi,
-                    quo assumenda eos neque labore vel fugit possimus voluptate minima odio. Hic facere voluptatibus,
-                    alias repellat sint vitae vero libero incidunt cupiditate perferendis dolor cumque nemo adipisci
-                    error accusantium harum id ipsam. Quaerat quae eum laborum excepturi ullam exercitationem et vitae
-                    architecto pariatur dolore nihil, blanditiis facere modi ipsa sunt quod fuga suscipit, libero in
-                    similique? Tempora quo totam iste, non deserunt aspernatur ipsa quasi maxime quia? Ipsam fugiat
-                    repudiandae, architecto dignissimos modi atque hic quam explicabo doloribus officiis maxime, commodi
-                    natus. Quam nostrum, natus eligendi atque, laudantium inventore voluptates ex omnis quae possimus in
-                    facilis. Ratione nihil tenetur vitae excepturi hic optio ad, dignissimos blanditiis autem quis
-                    aperiam praesentium deleniti voluptatibus cupiditate, incidunt corrupti? Facilis rem possimus id
-                    ipsa quas doloribus tempore illum deleniti quia asperiores vero enim est temporibus autem impedit
-                    iste harum ut maxime laboriosam accusamus, eum similique perspiciatis consequatur voluptate! Ad
-                    ducimus, magni ullam delectus deserunt optio aliquid soluta quibusdam rem architecto eligendi
-                    laborum nostrum esse. Soluta necessitatibus distinctio, ducimus similique tempore quasi? Labore
-                    libero totam iusto iure maiores porro dolor debitis quae aspernatur veritatis voluptate accusantium
-                    quibusdam, ipsa fugit optio doloremque quasi animi perferendis maxime nam! Architecto, placeat!
-                    Eligendi officiis cum laudantium cupiditate ipsum dicta! Minima mollitia et cum nisi dolore. Qui
-                    fugit id cum inventore, voluptatibus enim soluta sed! Enim doloribus est ex? Deserunt, at harum. In
-                    animi expedita ipsa enim repellendus maxime, incidunt et ipsam assumenda velit vel nobis! Quaerat ut
-                    facere dolores quam beatae alias suscipit praesentium natus totam quo deleniti, soluta aliquam
-                    consectetur est. Architecto dignissimos recusandae deserunt magni amet, repudiandae voluptate
-                    quisquam unde possimus culpa. Quod beatae, vero tenetur consectetur excepturi quae a adipisci ad
-                    impedit molestias, ab tempore fugit sunt architecto ducimus? Aspernatur, animi sunt! Fugiat!
+                    <ol class="det">
+                        
+                    </ol>
                 </p>
             </div>
             <div>
-                <div class="bottom-buttons">
-                    <button>Save For Later</button>
-                    <button>Hide Information</button>
-                </div>
             </div>
-
         </div>
     </div>
 </body>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
