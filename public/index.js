@@ -151,22 +151,6 @@ $(document).ready(function () {
     });
 });
 
-$(".reset").click(function () {
-    location.reload();
-    fetch('/reset').then(function (response) {
-        if (response.status === 200) {
-            // Request was successful, handle it here
-            console.log("Request succeeded");
-        } else {
-            // Handle non-successful responses here
-            console.error("Request failed with status:", response.status);
-        }
-    })
-        .catch(function (err) {
-            console.error(err);
-        });
-});
-
 $(document).on("click", ".getMoreInfo", function () {
     // Store a reference to the clicked button
     const clickedButton = $(this);
