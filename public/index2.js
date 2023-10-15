@@ -124,21 +124,19 @@ $(document).ready(function () {
                             color = "color:green";
                             text = "mild";
                         }
-                        $(".anotherup").append(
-                            `<div class="upR">Interaction` +
-                            '<ol>' +
+                        $(".list").append(
                             "<li>" +
-                            "Name1:" + interaction.name1 + "<br>" +
-                            "Name2: " + interaction.name2 + "<br>" +
-                            "Description: " + interaction.description + "<br>" +
+                            "<p>Name1:" + interaction.name1 + "</p>" +
+                            "<p>Name2: " + interaction.name2 + "</p>" +
+                            "<p>Description: " + interaction.description + "</p>" +
                             "Safety Level: <span style=" +
                             `${color};>${text}</span>` +
-                            `<button class="getMoreInfo">Get More Info</button>` +
-                            "</li>" +
-                            `</ol>` +
-                            `</div>`
+                            `<button class="getMoreInfo" onclick="document.getElementsByClassName('down')[0].style.visibility = 'visible'; " style="background-color:#c9c9c94d; border:none; border-radius:10px; margin-left:10px; color: white; padding:4px;"
+                            >Get More Info</button>` +
+                            "</li>"
                         );
                     });
+
                 } else {
                     $('.list').append(
                         `<li>"No interactions found"</li>`

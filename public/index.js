@@ -136,7 +136,7 @@ $(document).ready(function () {
                             "</li>"
                         );
                     });
-                    
+
                 } else {
                     $('.list').append(
                         `<li>"No interactions found"</li>`
@@ -194,7 +194,7 @@ $(document).on("click", ".getMoreInfo", function () {
             const druginteractionDetail = data.drugInteractionDetail;
             $(".down").css("visibility", "visible");
             // Append the drugInteractionDetail to the clicked button's parent div
-            $(".det").append("<li>" + druginteractionDetail + "</li>"); 
+            $(".det").append("<li>" + druginteractionDetail + "</li>");
         },
         error: function () {
             console.error("Network response was not ok");
