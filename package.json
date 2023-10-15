@@ -19,6 +19,7 @@
     "express-fileupload": "^1.4.1",
     "fs": "^0.0.1-security",
     "hercai": "^11.0.0",
+    "nodemon": "^3.0.1",
     "path": "^0.12.7",
     "url": "^0.11.2",
     "utl": "^0.0.1"

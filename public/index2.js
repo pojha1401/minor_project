@@ -193,9 +193,9 @@ $(document).on("click", ".getMoreInfo", function () {
 
             // Access the drugInteractionDetail from the response data
             const druginteractionDetail = data.drugInteractionDetail;
-
+            $(".down").css("visibility", "visible");
             // Append the drugInteractionDetail to the clicked button's parent div
-            dataDiv.append("<p>" + druginteractionDetail + "</p>");
+            dataDiv.append("<li>" + druginteractionDetail + "</li>");
         },
         error: function () {
             console.error("Network response was not ok");
