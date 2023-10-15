@@ -31,6 +31,16 @@
     <div id="medicineList"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="index.js"></script>
+    <script>
+        const buttons = document.querySelectorAll('.getMoreInfo');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

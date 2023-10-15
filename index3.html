@@ -41,6 +41,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Concert One', sans-serif;
         }
 
         p {
@@ -468,6 +469,17 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="index.js"></script>
+<script src="index3.js"></script>
 
+<script>
+   
+    const buttons = document.querySelectorAll('.getMoreInfo');
+    buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                });
+            });
+        });
+</script>
 </html>
